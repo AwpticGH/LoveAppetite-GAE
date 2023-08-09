@@ -11,22 +11,6 @@ router.get(RouterDictionary.INDEX, (request, response) => {
     });
 });
 
-// Login Page
-router.get(RouterDictionary.LOGIN, (request, response) => {
-    return response.render("user/login", {
-        layout: "templates/main",
-        page_title: "Love Appetite - Login"
-    });
-});
-
-// Register Page
-router.get(RouterDictionary.REGISTER, (request, response) => {
-    return response.render("user/register", {
-        layout: "templates/main",
-        page_title: "Love Appetite - Register"
-    });
-});
-
 // User (Read) Page
 router.get(RouterDictionary.USER_READ, (request, response) => {
     return response.render("user/read", {
