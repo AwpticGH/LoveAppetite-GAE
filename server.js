@@ -6,10 +6,10 @@
  *      [x]  2. dictionary
  *      [x]      - RouterDictionary
  *      [x]      - database/ReferenceDictionary
- *      []  3. src/model
- *      []      - BaseModel
- *      []      - TransactionModel
- *      []      - UserModel
+ *      [x]  3. src/model
+ *      [x]      - BaseModel
+ *      [x]      - TransactionModel
+ *      [x]      - UserModel
  *      []  4. src/controller
  *      []      - BaseController
  *      []      - CategoryController
@@ -18,16 +18,16 @@
  *      []      - TransactionController
  *      []      - UserController
  *      []  5. src/config
- *      []      - AuthenticationConfig
- *      []      - FirebaseConfig
+ *      [x]      - AuthenticationConfig
+ *      [x]      - FirebaseConfig
  *      []      - EncryptionConfig
- *      []  6. src/middleware/WebMiddleware
- *      []  7. src/router
+ *      [x]  6. src/middleware/WebMiddleware
+ *      [x]  7. src/router
  *      []      - AppRouter
  *      []      - AuthenticationRouter
- *      []  8. src/flag
- *      []      - AuthenticationFlag
- *      []      - FirebaseFlag
+ *      [x]  8. src/flag
+ *      [x]      - AuthenticationFlag
+ *      [x]      - FirebaseFlag
  */
 
 // Dependencies
