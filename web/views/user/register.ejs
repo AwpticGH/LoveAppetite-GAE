@@ -1,0 +1,33 @@
+<section class="order" id="order">
+
+    <h1 class="heading"> <span>register</span> now </h1>
+
+    <div class="row">
+
+        <div class="image">
+            <img src="images/order-img.jpg" alt="">
+        </div>
+
+        <form action="<%= RouterDictionary.REGISTER %>" method="post">
+
+            <div class="inputBox">
+                <input type="text" placeholder="name" name="<%= QueryDictionary.USER_NAME %>">
+                <input type="email" placeholder="email" name="<%= QueryDictionary.USER_EMAIL %>">
+            </div>
+
+            <div class="inputBox">
+                <input type="password" placeholder="password" name="<%= QueryDictionary.USER_PASSWORD %>">
+                <input type="number" placeholder="phone number" name="<%= QueryDictionary.USER_PHONE_NUMBER %>">
+            </div>
+
+            <div class="inputBox">
+                <input type="text" placeholder="address" name="<%= QueryDictionary.USER_ADDRESS %>" id="address" cols="30" rows="10">
+            </div>
+
+            <input type="submit" value="register now" class="btn">
+
+        </form>
+
+    </div>
+
+</section>

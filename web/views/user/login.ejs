@@ -1,0 +1,26 @@
+<section class="order" id="order">
+
+    <h1 class="heading"> <span>login</span> now </h1>
+
+    <div class="row">
+
+        <div class="image">
+            <img src="images/order-img.jpg" alt="">
+        </div>
+
+        <form action="<%= RouterDictionary.LOGIN %>" method="post">
+
+            <div class="inputBox">
+                <input type="email" placeholder="email" name="<%= QueryDictionary.USER_EMAIL %>">
+                <input type="password" placeholder="password" name="<%= QueryDictionary.USER_PASSWORD %>">
+            </div>
+
+            <input type="submit" value="login" class="btn">
+
+            <a href="<%= RouterDictionary.REGISTER %>" class="btn" style="float: right;">Register Here!</a>
+
+        </form>
+
+    </div>
+
+</section>
