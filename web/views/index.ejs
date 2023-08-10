@@ -1,6 +1,22 @@
 <%
     let productsLength = products.length;
     let paymentsLength = payments.length;
+    let categoriesLength = categories.length;
+    let specialities;
+    if (productsLength > categoriesLength) {
+        specialities = [];
+        for (let i = 0; i < productsLength; i += 4) {
+            console.log(i);
+            if (specialities.length === categoriesLength) break;
+            let specialitiesLength = specialities.length;
+            for (let j = i; j < i + categoriesLength; j++) {
+                if (specialities.length !== specialitiesLength) break;
+                if (products[j].HOT === "1") {
+                    specialities.push(products[j]);
+                }
+            }
+        }
+    }
 %>
 
 <!-- home section starts  -->
@@ -29,13 +45,13 @@
 
     <div class="box-container">
 
-        <% for (let i = 0; i < 5; i++ ) { %>
+        <% for (let i = 0; i < categoriesLength; i++ ) { %>
             <div class="box">
-                <img class="image" src="images/s-img-1.jpg" alt="">
+                <img class="image" src="<%= specialities[i] !== undefined ? specialities[i].ImageURL : "images/s-img-3.jpg" %>" alt="">
                 <div class="content">
-                    <img src="images/s-1.png" alt="">
-                    <h3>Category</h3>
-                    <p>Description</p>
+                    <img src="images/s-1.jpg" alt="">
+                    <h3><%= specialities[i] !== undefined ? categories[Number.parseInt(specialities[i].CategoryID) - 1].Name : "Category" %></h3>
+                    <p><%= specialities[i] !== undefined ? categories[Number.parseInt(specialities[i].CategoryID) - 1].Description : "Description" %></p>
                 </div>
             </div>
         <% }%>
@@ -55,7 +71,6 @@
     <div class="box-container">
 
         <div class="box">
-            <span class="price"> $5 - $20 </span>
             <img src="images/p-1.jpg" alt="">
             <h3>tasty burger</h3>
             <div class="stars">
@@ -68,7 +83,6 @@
             <a href="#order" class="btn">order now</a>
         </div>
         <div class="box">
-            <span class="price"> $5 - $20 </span>
             <img src="images/p-2.jpg" alt="">
             <h3>tasty cakes</h3>
             <div class="stars">
@@ -81,7 +95,6 @@
             <a href="#order" class="btn">order now</a>
         </div>
         <div class="box">
-            <span class="price"> $5 - $20 </span>
             <img src="images/p-3.jpg" alt="">
             <h3>tasty sweets</h3>
             <div class="stars">
@@ -94,7 +107,6 @@
             <a href="#order" class="btn">order now</a>
         </div>
         <div class="box">
-            <span class="price"> $5 - $20 </span>
             <img src="images/p-4.jpg" alt="">
             <h3>tasty cupcakes</h3>
             <div class="stars">
@@ -107,7 +119,6 @@
             <a href="#order" class="btn">order now</a>
         </div>
         <div class="box">
-            <span class="price"> $5 - $20 </span>
             <img src="images/p-5.jpg" alt="">
             <h3>cold drinks</h3>
             <div class="stars">
@@ -120,7 +131,6 @@
             <a href="#order" class="btn">order now</a>
         </div>
         <div class="box">
-            <span class="price"> $5 - $20 </span>
             <img src="images/p-6.jpg" alt="">
             <h3>cold ice-cream</h3>
             <div class="stars">
@@ -178,12 +188,12 @@
 
     <div class="box-container">
 
-        <% for (let i = 0; i < 20; i++) { %>
+        <% for (let i = 0; i < productsLength; i++) { %>
             <div class="box">
-                <img src="images/g-1.jpg" alt="">
+                <img src="<%= products[i].ImageURL %>" alt="">
                 <div class="content">
-                    <h3>Product</h3>
-                    <p>Product</p>
+                    <h3><%= products[i].Name %></h3>
+                    <p><%= `Rp${products[i].Price}` %></p>
                     <a href="#order" class="btn">order now</a>
                 </div>
             </div>

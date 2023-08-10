@@ -15,6 +15,9 @@ const router = express.Router();
 
 // Index / Home Page
 router.get(RouterDictionary.INDEX, async (request, response) => {
+    let categoryController = new CategoryController();
+    let categories = await categoryController.read();
+
     let productController = new ProductController();
     let products = await productController.read();
 
@@ -24,6 +27,7 @@ router.get(RouterDictionary.INDEX, async (request, response) => {
     return response.render("index", {
         layout: "templates/main",
         page_title: PageDictionary.LANDING,
+        categories: categories,
         products: products,
         payments: payments
     });
