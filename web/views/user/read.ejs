@@ -1,60 +1,59 @@
 <!-- Begin page content -->
 <main class="flex-shrink-0">
     <div class="container">
-        <h1 class="mt-5">Edit Account - ${name}</h1>
-        <p class="lead">Edit account ${name} in G2Airline</p>
-        <form action="index">
-            <div class="mb-3">
-                <button type="submit" class="btn btn-primary btn-small btn-rounded">Home</button>
-            </div>
-        </form>
+        <h1 class="mt-5">Edit Account - <%= request.session[SessionDictionary.USER_MODEL].name %></h1>
+        <p class="lead">Edit account <%= request.session[SessionDictionary.USER_MODEL].name %> in G2Airline</p>
+        <div class="mb-3">
+            <a href="<%= RouterDictionary.INDEX %>" type="submit" class="btn btn-primary btn-small btn-rounded">Home</a>
+        </div>
         <div class="row pt-5">
             <div class="col-12">
                 <form method="POST" action="<%= RouterDictionary.USER_READ %>">
-                    <input type="hidden" name="account-id" value="<%= profileRs.getString("ID")%>" />
                     <div class="mb-3">
                         <label class="form-label">Name</label>
                         <input type="text" class="form-control"
                                name="<%= QueryDictionary.USER_NAME %>" readonly
-                               value="${name}"
+                               value="<%= request.session[SessionDictionary.USER_MODEL].name %>"
                         >
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Email</label>
                         <input type="text" class="form-control"
                                name="<%= QueryDictionary.USER_EMAIL %>" readonly
-                               value=""
+                               value="<%= request.session[SessionDictionary.USER_MODEL].email %>"
                         >
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Password</label>
                         <input type="password" class="form-control"
                                name="<%= QueryDictionary.USER_PASSWORD %>"
-                               value="" required
+                               value=""
+                               required
                         >
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Phone Number</label>
                         <input type="number" class="form-control"
-                               placeholder="Phone Number..." name="<%= QueryDictionary.USER_PHONE_NUMBER %>" required
-                               value=""
+                               placeholder="Phone Number..." name="<%= QueryDictionary.USER_PHONE_NUMBER %>"
+                               value="<%= request.session[SessionDictionary.USER_MODEL].phoneNumber %>"
+                               required
                         >
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Address</label>
-                        <input type="text" class="form-control" placeholder="address" name="<%= QueryDictionary.USER_ADDRESS %>" id="address" value="" required>
+                        <input type="text" class="form-control" placeholder="address" name="<%= QueryDictionary.USER_ADDRESS %>" id="address" value="<%= request.session[SessionDictionary.USER_MODEL].address %>" required>
                     </div>
                     <div class="mb-3">
-                        <button type="submit" class="btn btn-primary btn-small btn-rounded">Edit</button>
+                        <button type="submit" class="btn btn-primary btn-small btn-rounded" onclick="confirm('Confirm Update?')">Update</button>
                     </div>
                 </form>
-                <form action="history">
+                <form action="<%= RouterDictionary.TRANSACTION_READ %>">
                     <div class="mb-3">
-                        <input type="hidden" name="id" value="">
+                        <input type="hidden" name="<%= QueryDictionary.USER_ID %>" value="<%= request.session[SessionDictionary.USER_MODEL].id %>">
                         <button type="submit" class="btn btn-primary btn-small btn-rounded">Order History</button>
                     </div>
                 </form>
-                <form action="logout">
+                <form action="<%= RouterDictionary.LOGOUT %>">
                     <div class="mb-3">
                         <button type="submit" class="btn btn-primary btn-small btn-rounded">Logout</button>
                     </div>
@@ -62,4 +61,4 @@
             </div>
         </div>
     </div>
-</main
+</main>

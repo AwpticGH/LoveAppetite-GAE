@@ -1,3 +1,8 @@
+<%
+    let productsLength = products.length;
+    let paymentsLength = payments.length;
+%>
+
 <!-- home section starts  -->
 
 <section class="home" id="home">
@@ -202,29 +207,29 @@
             <img src="images/order-img.jpg" alt="">
         </div>
 
-        <form action="order" method="post">
+        <form action="<%= RouterDictionary.TRANSACTION_CREATE %>" method="post">
 
             <div class="inputBox">
-                <input type="text" placeholder="Name" name="name" required>
-                <input type="email" placeholder="Email" name="email">
+                <input type="text" placeholder="Name" name="<%= QueryDictionary.USER_NAME %>" required>
+                <input type="email" placeholder="Email" name="<%= QueryDictionary.USER_EMAIL %>" required>
             </div>
 
             <div class="inputBox">
-                <input type="number" placeholder="Phone Number" name="phone-number" required>
-                <select placeholder="default-aria-example" id="product" name="product" required>
-                    <% for (let i = 0; i < 20; i++) { %>
-                        <option value="<%= i.toString() %>"><%= i.toString() %></option>
+                <input type="number" placeholder="Phone Number" name="<%= QueryDictionary.USER_PHONE_NUMBER %>" required>
+                <select placeholder="default-aria-example" id="product" name="<%= QueryDictionary.PRODUCT %>" required>
+                    <% for (let i = 0; i < productsLength; i++) { %>
+                        <option value="<%= products[i].ID %>"><%= products[i].Name %></option>
                     <% } %>
                 </select>
             </div>
 
             <div class="inputBox">
-                <select placeholder="default-aria-example" id="product" name="payment" required>
-                    <% for (let i = 0; i < 7; i++) { %>
-                        <option value="<%= i.toString() %>"><%= i.toString() %></option>
+                <select placeholder="default-aria-example" id="product" name="<%= QueryDictionary.PAYMENT %>" required>
+                    <% for (let i = 0; i < paymentsLength; i++) { %>
+                        <option value="<%= payments[i].ID %>"><%= payments[i].Name %></option>
                     <% } %>
                 </select>
-                <input type="text" placeholder="Address" name="address" id="address" required>
+                <input type="text" placeholder="Address" name="<%= QueryDictionary.USER_ADDRESS %>" id="address" required>
             </div>
 
             <input type="submit" value="order now" class="btn">

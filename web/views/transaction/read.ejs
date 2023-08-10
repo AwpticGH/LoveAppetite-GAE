@@ -1,3 +1,7 @@
+<%
+let length = transactions.length;
+%>
+
 <section class="order" id="order">
     <h1 class="heading"> <span>order</span> history for ${name}</h1>
 
@@ -16,16 +20,31 @@
                 <th>Time Of Purchase</th>
             </tr>
 
-            <% for (let i = 0; i < 5; i++) { %>
+            <% for (let i = 0; i < length; i++) { %>
+            <%
+                let sProductId = transactions[i].ProductID;
+                let iProductId = Number.parseInt(sProductId);
+                let indexProduct = iProductId - 1;
+
+                let sCategoryId = products[indexProduct].CategoryID;
+                let iCategoryId = Number.parseInt(sCategoryId);
+                let indexCategory = iCategoryId - 1;
+
+                let sPaymentId = transactions[i].PaymentID;
+                let iPaymentId = Number.parseInt(sPaymentId);
+                let indexPayment = iPaymentId - 1;
+
+                let date = new Date(transactions[i].Timestamp);
+            %>
             <tr>
                 <td><%= i + 1 %></td>
-                <td>category</td>
-                <td>product</td>
-                <td>address</td>
-                <td>payment</td>
-                <td>Yes</td>
-                <td>date</td>
-                <td>time</td>
+                <td><%= categories[indexCategory].Name %></td>
+                <td><%= products[indexProduct].Name %></td>
+                <td><%= transactions[i].Address %></td>
+                <td><%= payments[indexPayment].Name %></td>
+                <td><%= transactions[i].Paid === "1" ? "Yes" : "No" %></td>
+                <td><%= `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}` %></td>
+                <td><%= `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}` %></td>
             </tr>
             <% } %>
         </table>

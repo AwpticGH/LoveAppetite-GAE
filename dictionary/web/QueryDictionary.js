@@ -1,4 +1,5 @@
 class QueryDictionary {
+    static #USER_ID = "user-id";
     static #USER_EMAIL = "user-email";
     static #USER_PASSWORD = "user-password";
     static #USER_NAME = "user-name";
@@ -7,7 +8,11 @@ class QueryDictionary {
 
     static #PRODUCT = "product";
     static #PAYMENT = "payment";
- 
+
+    static get USER_ID() {
+        return this.#USER_ID;
+    }
+
     static get USER_EMAIL() {
         return this.#USER_EMAIL;
     }

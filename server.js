@@ -12,7 +12,7 @@
  *      [x]      - UserModel
  *      []  4. src/controller
  *      []      - BaseController
- *      []      - CategoryController
+ *      []      - CategoryController.js
  *      []      - PaymentController
  *      []      - ProductController
  *      []      - TransactionController
@@ -33,8 +33,11 @@
 // Dependencies
 // App
 const StringGenerator = require("./src/helper/StringGenerator");
+const AuthenticationMiddleware = require("./src/middleware/AuthenticationMiddleware");
 const DependencyMiddleware = require("./src/middleware/DependencyMiddleware");
+const FirebaseMiddleware = require("./src/middleware/FirebaseMiddleware");
 const AppRouter = require("./src/router/AppRouter");
+const AuthenticationRouter = require("./src/router/AuthenticationRouter");
 
 // Core
 const path = require("path");
@@ -76,11 +79,14 @@ app.use(
 );
 
 app.use(express.urlencoded({extended: false}));
+app.use(AuthenticationMiddleware);
 app.use(DependencyMiddleware);
+app.use(FirebaseMiddleware);
 app.use(AppRouter);
+app.use(AuthenticationRouter);
 app.use(express.static(path.join(__dirname, "web/public")));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
     console.log(`App Started! Listening on Port ${PORT}, process.env.NODE_ENV = ${process.env.NODE_ENV}`);
 });

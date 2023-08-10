@@ -12,7 +12,7 @@
         <a href="<%= `${RouterDictionary.INDEX}#popular` %>">popular</a>
         <a href="<%= `${RouterDictionary.INDEX}#gallery` %>">gallery</a>
         <a href="<%= `${RouterDictionary.INDEX}#order` %>">order</a>
-        <a href="<%= RouterDictionary.LOGIN %>">login</a>
+        <a href="<%= AuthenticationFlag.isAuthenticated(request) ? RouterDictionary.USER_READ : RouterDictionary.LOGIN %>"><%= AuthenticationFlag.isAuthenticated(request) ? request.session[SessionDictionary.USER_MODEL].name : "login" %></a>
     </nav>
 
 </header>
